@@ -1,0 +1,46 @@
+.money-raised {
+  margin: 7px 0;
+  .maincontent {
+    background-color: $secondary-color;
+  }
+  @include set-text-style(600, normal, 0.9rem, 1.5, $primary-color);
+  .money {
+    @include set-text-style(700, normal, 1rem, 1.5, $primary-color);
+  }
+  .raisedoutof {
+    @include set-text-style(700, normal, 0.85rem, 1.5, #756666);
+  }
+}
+.status-container {
+  display: flex;
+  padding: 0 16px;
+  align-items: center;
+  .date-status {
+    flex: 0.6;
+    @include set-text-style(600, normal, 0.9rem, 1.5, $primary-color);
+  }
+  .like-status {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    flex: 0.4;
+    @include set-text-style(600, normal, 0.9rem, 1.5, $primary-color);
+
+    .likeimage {
+      margin: 5px;
+    }
+  }
+}
+
+.readmore {
+  margin-top: 17px;
+  .readmorelink {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid $primary-color;
+  }
+}
+
+.readmorelink:hover {
+  color: $primary-color !important;
+}

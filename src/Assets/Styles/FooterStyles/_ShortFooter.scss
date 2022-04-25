@@ -1,0 +1,23 @@
+.shortfooter-container {
+  background-color: $body-color;
+  display: flex;
+  align-items: center;
+  height: 61px;
+  border-top: 1px solid rgba(85, 91, 110, 0.5);
+  padding: 0px 15px;
+  .copyrighttext-container {
+    flex: 0.5;
+    @include set-text-style(600, normal, 13px, 25.78px, $primary-color);
+  }
+
+  .logo-container {
+    flex: 0.5;
+    width: 90px;
+    height: 100%;
+    .logo {
+      object-fit: cover;
+      width: 90px;
+      height: 100%;
+    }
+  }
+}

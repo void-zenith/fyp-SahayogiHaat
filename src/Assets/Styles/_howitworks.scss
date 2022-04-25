@@ -1,0 +1,88 @@
+.howitworks-container{
+    width: 100%;
+    &__header{
+        text-align: center;
+        @include set-text-style(800, normal, 17px, 2, $primary-color);
+    }
+    &__content{
+        margin: 0px auto;
+        width: 60%;
+        .howitworks-content__description{
+            .sahayogihaat-description{
+                @include set-text-style(600, normal, 17px, 1.5, $primary-color);
+                text-align: justify;
+            }
+        }
+        .howitworks-content__youtube{
+            text-align: center;
+            margin: 15px;
+        }
+        .howitworks-content__steps{
+            .stepstostart-container {
+                .header-container {
+                    .header-text {
+                        text-align: center;
+                        @include set-text-style(800, normal, 2.5vw, 3, $primary-color);
+                    }
+                }
+            
+                .steps-container {
+                    margin: 0 auto;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+            
+                    .start-step-container {
+                        flex: 0.3;
+                    }
+            
+                    .share-step-container {
+                        flex: 0.3;
+                    }
+            
+                    .get-step-container {
+                        flex: 0.3;
+                    }
+            
+                    .all-step {
+                        height: 250px;
+                        text-align: center;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+            
+                        .circle-container {
+                            height: 120px;
+                            width: 120px;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: $secondary-color;
+                            border: 1px solid $third-color;
+                        }
+            
+                        .step-text {
+                            margin-top: 5px;
+            
+                            .step-title {
+                                @include set-text-style(800, normal, 1.3vw, 1.5, $primary-color);
+                            }
+            
+                            .step-description {
+                                @include set-text-style(600, normal, 1vw, 1.5, $primary-color);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .howitworks-content__buttons{
+            display: flex;
+            margin: 15px;
+            justify-content: center;
+            gap: 40px;
+        }
+    }
+}

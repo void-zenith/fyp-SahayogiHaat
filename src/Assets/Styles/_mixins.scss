@@ -1,0 +1,92 @@
+@mixin button-type($type) {
+  @if $type == "primary" {
+    background-color: $primary-color;
+    &:hover {
+      background-color: darken($primary-color, 3);
+    }
+  } @else if $type == "secondary" {
+    background-color: $lightorange-color;
+    &:hover {
+      background-color: darken($lightorange-color, 9);
+    }
+  } @else if $type=="danger" {
+    background-color:#ED5656;
+  
+    &:hover {
+      background-color: darken(#ED5656, 9);
+    }
+  }@else if $type == "outlined-primary" {
+    background-color: $background-color;
+    border: solid 2px $primary-color;
+    &:hover {
+      background-color: lighten($background-color, 21);
+    }
+  } @else if $type == "primary-rectangle" {
+    background-color: $background-color;
+    &:hover {
+      background-color: darken($background-color, 9);
+    }
+  } @else if $type == "outlined-primary-rectangle" {
+    background-color: $background-color;
+    border: solid 2px $primary-color;
+    &:hover {
+      background-color: lighten($background-color, 21);
+    }
+  } @else {
+    @error "Unknown #{type} Type, only accepts [primary, secondary, outlined-primary,primary-rectangle,outlined-primary-rectangle]";
+  }
+}
+
+@mixin set-text-style(
+  $fontweight: 500,
+  $fontstyle: normal,
+  $fontsize: 24px,
+  $lineheight: 28.8px,
+  $color: black
+) {
+  font-weight: $fontweight;
+  font-style: $fontstyle;
+  font-size: $fontsize;
+  line-height: $lineheight;
+  color: $color;
+}
+
+@mixin button-size($size) {
+  @if $size == "medium" {
+    width: 200px;
+    height: 45px;
+  } @else if $size == "medium-60" {
+    width: 200px;
+    height: 60px;
+  } @else if $size == "small" {
+    width: 130px;
+    height: 45px;
+  }
+  @else if $size=="x-small" {
+    width:80px;
+    height: 40px;
+  } @else if $size=="small-60" {
+    width: 130px;
+    height: 60px;
+  }@else if $size == "large" {
+    width: 240px;
+    height: 40px;
+  }@else if $size=="large-60" {
+    width: 240px;
+    height: 60px;
+  } @else {
+    @error "Unknown #{size} Type, only accepts [medium,large,small,x-small]";
+  }
+}
+
+@mixin inputfield-size($size) {
+  @if $size== "medium" {
+    width: 45vh;
+  } @else if $size == "small" {
+    width: 35vh;
+  } @else if $size == "large" {
+    width: 75vh;
+  } @else {
+    @error "Unknown #{size} Type, only accepts [medium,small,large]";
+  }
+}

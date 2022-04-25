@@ -1,0 +1,51 @@
+.stepstostart-container {
+  .header-container {
+    .header-text {
+      text-align: center;
+      @include set-text-style(800, normal, 2.5vw, 3, $primary-color);
+    }
+  }
+
+  .steps-container {
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .start-step-container {
+      flex: 0.3;
+    }
+    .share-step-container {
+      flex: 0.3;
+    }
+    .get-step-container {
+      flex: 0.3;
+    }
+    .all-step {
+      height: 250px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .circle-container {
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $secondary-color;
+        border: 1px solid $third-color;
+      }
+      .step-text {
+        margin-top: 5px;
+        .step-title {
+          @include set-text-style(800, normal, 1.3vw, 1.5, $primary-color);
+        }
+        .step-description {
+          @include set-text-style(600, normal, 1vw, 1.5, $primary-color);
+        }
+      }
+    }
+  }
+}

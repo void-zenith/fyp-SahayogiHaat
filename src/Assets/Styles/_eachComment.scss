@@ -1,0 +1,31 @@
+.eachcomment {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin:10px;
+    &-profilecontainer {
+        .commentprofile {
+            width: 50px;
+            border-radius: 50%;
+        }
+    }
+
+    &-comment {
+        flex: 1.5;
+
+        &__name {
+            @include set-text-style(700, normal, 20px, 1.5, $primary-color);
+        }
+
+        &__date {
+            @include set-text-style(600, normal, 16px, 1, $primary-color);
+        }
+
+        &__comment {
+            text-align: justify;
+            @include set-text-style(600, normal, 16px, 1.5, $primary-color);
+        }
+    }
+
+   
+}

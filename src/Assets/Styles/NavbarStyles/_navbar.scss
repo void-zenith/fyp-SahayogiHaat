@@ -1,0 +1,82 @@
+@keyframes logo {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.navbar-container {
+  background-color: $background-color;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  &__left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    &-logo {
+      cursor: pointer;
+      .logo {
+        width: 90px;
+        height: 90px;
+      }
+    }
+
+    &-search {
+      animation: logo 1.5s ease;
+
+      display: flex;
+      align-items: center;
+      margin-left: 5%;
+      cursor: pointer;
+      color: $primary-color;
+      .searchlogo {
+        width: 20px;
+        height: 20px;
+      }
+      p {
+        @include set-text-style(600, normal, 17px, 25.78px, $primary-color);
+        margin-left: 5px;
+      }
+    }
+    &-beasahayogi {
+      animation: logo 1.5s ease;
+
+      margin-left: 5%;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex: 0.7;
+    align-items: center;
+    justify-content: space-evenly;
+    &-startfund {
+      animation: logo 1.5s ease;
+    }
+    &-howitworks {
+      cursor: pointer;
+    }
+    &-login {
+      cursor: pointer;
+    }
+    &-register {
+      cursor: pointer;
+    }
+  }
+}
+
+.link {
+  text-decoration: none;
+  animation: logo 1.5s ease;
+
+  @include set-text-style(600, normal, 17px, 25.78px, $primary-color);
+}
+
+.link:hover {
+  color: darken($color: $primary-color, $amount: 100);
+}

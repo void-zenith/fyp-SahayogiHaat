@@ -1,0 +1,88 @@
+.herosection-container {
+  background-color: $body-color;
+  display: flex;
+  height: 70vh;
+  align-items: center;
+  margin-top: 6px;
+  &__left {
+    flex: 0.6;
+    height: 90%;
+
+    .leftcontainer-words {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      height: 20vh;
+      padding: 5px;
+
+      .catchphraseword {
+        @include set-text-style(600, normal, 1.5vw, 1.5, $primary-color);
+      }
+      .subcatchphraseword {
+        @include set-text-style(600, normal, 20px, 1.5, $primary-color);
+      }
+    }
+
+    .donation-status {
+      display: flex;
+      width: 80%;
+      margin: 0 auto;
+      height: 30vh;
+      align-items: center;
+      justify-content: space-around;
+      .donation-container {
+        width: 25%;
+        height: 70%;
+        background-color: $third-color;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .text-container {
+          @include set-text-style(600, normal, 20px, 1.5, $primary-color);
+        }
+        .total-container {
+          @include set-text-style(600, normal, 22px, 1.5, $primary-color);
+        }
+      }
+      .totalsuccessful-container {
+        .text-container {
+          text-align: center;
+          @include set-text-style(600, normal, 17px, 1.5, $primary-color);
+        }
+      }
+    }
+    .startafundraiser-container {
+      margin: 0 auto;
+      width: 73%;
+      display: flex;
+      align-items: center;
+      .divider {
+        margin: 0 15px;
+        width: 2px;
+        height: 30px;
+        border-radius: 5px;
+        background-color: $secondary-color;
+      }
+      .play {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        p {
+          margin: 0 15px;
+          @include set-text-style(600, normal, 17px, 1.5, $primary-color);
+        }
+      }
+    }
+  }
+
+  &__right {
+    flex: 0.4;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

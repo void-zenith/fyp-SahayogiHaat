@@ -1,0 +1,63 @@
+.btn {
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lato", sans-serif;
+  padding: 5px 10px;
+  border: 0px;
+
+  &.curved {
+    border-radius: 40px;
+  }
+
+  &.rectangle {
+    border-radius: 15px;
+  }
+  &.medium {
+    @include button-size("medium");
+  }
+  &.medium-60 {
+    @include button-size("medium-60");
+  }
+  &.small {
+    @include button-size("small");
+  }
+  &.x-small{
+    @include button-size("x-small");
+  }
+  &.small-60 {
+    @include button-size("small-60");
+  }
+  &.large {
+    @include button-size("large");
+  }
+  &.large-60 {
+    @include button-size("large-60");
+  }
+  &.secondary {
+    @include button-type("secondary");
+    @include set-text-style(600, normal, 18px, 26.4px, $primary-color);
+  }
+  &.primary-rectangle {
+    @include button-type("primary-rectangle");
+    @include set-text-style(800, normal, 24px, 26.4px, $primary-color);
+  }
+  &.outlined-primary-rectangle {
+    @include button-type("outlined-primary-rectangle");
+    @include set-text-style(800, normal, 24px, 26.4px, $primary-color);
+  }
+  &.primary {
+    @include button-type("primary");
+    @include set-text-style(600, normal, 18px, 26.4px, $background-color);
+  }
+  &.danger {
+    @include button-type("danger");
+    @include set-text-style(600, normal, 18px, 26.4px, $background-color);
+  }
+  &.outlined-primary {
+    @include button-type("outlined-primary");
+    @include set-text-style(600, normal, 18px, 26.4px, $primary-color);
+  }
+}

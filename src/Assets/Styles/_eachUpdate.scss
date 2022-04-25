@@ -1,0 +1,16 @@
+.eachupdate{
+    width: 80%;
+    margin: 7px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+        &__name{
+            @include set-text-style(700, normal, 20px, 1.5, $primary-color);
+        }
+        &__date{
+            @include set-text-style(600, normal, 16px, 1, $primary-color);
+        }
+        &__message{
+            text-align: justify;
+            @include set-text-style(600, normal, 16px, 1.5, $primary-color);
+        }
+}

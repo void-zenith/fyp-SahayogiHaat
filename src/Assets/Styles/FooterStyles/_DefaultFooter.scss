@@ -1,0 +1,56 @@
+.footer-container {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: $body-color;
+  padding: 15px;
+
+  &__left {
+    flex: 0.55;
+    width: 100%;
+    .links-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px auto;
+      width: 70%;
+      .link-container {
+        line-height: 1.6;
+        ul {
+          list-style-type: none;
+        }
+        .each-links-heading {
+          @include set-text-style(700, normal, 22px, 2.5, $primary-color);
+          text-decoration: underline;
+        }
+      }
+    }
+    .buttons-container {
+      display: flex;
+      margin: 15px auto;
+      justify-content: space-evenly;
+      width: 80%;
+    }
+  }
+  &__right {
+    text-align: center;
+    flex: 0.45;
+    height: 100%;
+    width: 100%;
+    min-width: 350px;
+    .map-container {
+      height: 35vh;
+      width: 75%;
+      min-width: 230px;
+      margin: 5px auto;
+    }
+    .sociallinks-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        margin: 5px 5px 0px 5px;
+      }
+    }
+  }
+}

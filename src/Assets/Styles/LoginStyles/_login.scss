@@ -1,0 +1,117 @@
+.mainlogin-container {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  flex-direction: row;
+  height: calc(100vh - 135px);
+  &__left {
+    flex: 0.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    .login-container {
+      margin: 0 auto;
+      width: 65%;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 40px;
+      background-color: $primary-color;
+      line-height: 1.5;
+      .signintext {
+        text-align: center;
+        @include set-text-style(800, normal, 46px, 1.8, $background-color);
+      }
+      &__username {
+        margin: 0 auto;
+        width: 85%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        .userlogo {
+          width: 35px;
+          margin: 10px;
+        }
+        .usertext-container {
+          width: 100%;
+        }
+      }
+      &__password {
+        margin: 0 auto;
+        width: 85%;
+        display: flex;
+        margin-bottom: 20px;
+        align-items: center;
+        .passwordlogo {
+          margin: 10px;
+          width: 35px;
+        }
+        .passwordtext-container {
+          width: 100%;
+        }
+      }
+      &__remember {
+        width: 80%;
+        padding: 0px 30px;
+        .label {
+          @include set-text-style(800, normal, 18px, 2, $background-color);
+        }
+        .checkbox {
+          margin: 5px;
+        }
+      }
+      &__singinbtn {
+        margin-top: 15px;
+      }
+    }
+
+    .signup-container {
+      display: flex;
+      margin-top: 20px;
+      align-items: center;
+      p {
+        margin-right: 15px;
+        @include set-text-style(600, normal, 18px, 2, $primary-color);
+      }
+    }
+  }
+
+  &__right {
+    flex: 0.5;
+    width: 100%;
+
+    height: 100%;
+    .img-container {
+      width: 80%;
+      position: relative;
+      margin: 25px 0 0 0;
+      height: 80%;
+      img {
+        object-fit: cover;
+        width: 100%;
+        border-radius: 40px;
+        height: 110%;
+      }
+      .overlay {
+        position: absolute;
+        background-color: rgba(85, 91, 110, 0.5);
+        width: 100%;
+        height: 110%;
+        bottom: 0;
+        top: 0;
+        border-radius: 40px;
+        padding: 30px;
+        &-text {
+          h2 {
+            @include set-text-style(800, normal, 40px, 2, $background-color);
+          }
+          &__subtitle {
+            @include set-text-style(600, normal, 18px, 1.5, $body-color);
+          }
+        }
+      }
+    }
+  }
+}
