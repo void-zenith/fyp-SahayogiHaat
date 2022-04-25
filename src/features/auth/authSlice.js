@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { sign_in, sign_out, sign_up } from "./authAPI";
 
-import { AxiosInstance } from "axios";
-
 const initialState = {
   accesstoken: null,
   isLoggedIn: false,
@@ -62,18 +60,15 @@ export const register = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk(
-  "auth/logout",
-  async ({ rejectWithValue }) => {
-    try {
-      return await sign_out();
-    } catch (err) {
-      console.log(err);
-      if (!err.response) throw err;
-      return rejectWithValue(err);
-    }
+export const logout = createAsyncThunk("auth/logout", async () => {
+  try {
+    localStorage.clear();
+    return await sign_out();
+  } catch (err) {
+    if (!err.response) throw err;
+    return err;
   }
-);
+});
 
 const authSlice = createSlice({
   name: "auth",
@@ -102,6 +97,18 @@ const authSlice = createSlice({
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoggedIn = false;
+        state.isLoading = false;
+      })
+      .addCase(logout.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(logout.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isLoggedIn = false;
+        state.currentUser = null;
+        state.accesstoken = null;
+      })
+      .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
       });
   },

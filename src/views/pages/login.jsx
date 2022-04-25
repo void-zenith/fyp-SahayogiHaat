@@ -6,11 +6,13 @@ import CheckboxField from "../Components/CheckboxField";
 import UserIcon from "../../Assets/Images/user.png";
 import PasswordIcon from "../../Assets/Images/password.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 import loginbg from "../../Assets/Images/login-bg.png";
 import { login } from "../../features/auth/authSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [logindetails, setlogindetails] = useState({
     email: "",
@@ -20,7 +22,13 @@ const Login = () => {
     const email = logindetails.email;
     const password = logindetails.password;
     console.log(email, password);
-    await dispatch(login({ email, password }));
+    await dispatch(login({ email, password }))
+      .then(unwrapResult)
+      .then((res) => {
+        if (res.status === 200) {
+          navigate("/");
+        }
+      });
   };
   return (
     <div className="mainlogin-container">

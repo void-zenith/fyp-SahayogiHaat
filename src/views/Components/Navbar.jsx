@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import mainlogo from "../../Assets/Images/SahayogiHaat-logo.png";
 import Buttons from "./Buttons";
 import search from "../../Assets/Images/search.png";
@@ -13,7 +14,8 @@ import {
 import profileuser from "../../Assets/Images/profileuser.png";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import { logout } from "../../features/auth/authSlice";
+
 const Navbar = ({ navbarview }) => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
@@ -21,6 +23,7 @@ const Navbar = ({ navbarview }) => {
   const setInput = (e) => {
     setSearchInput(e.target.value);
   };
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const goToSearchBar = () => {
     dispatch(showSearchBar());
@@ -34,6 +37,10 @@ const Navbar = ({ navbarview }) => {
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const hanldeLogout = () => {
+    dispatch(logout());
   };
 
   const handleClose = () => {
@@ -97,45 +104,58 @@ const Navbar = ({ navbarview }) => {
               How it Works?
             </Link>
           </div>
-          {/* <div
-            className="navbar-container__right-login"
-            onClick={showShortFooters}
-          >
-            <Link to="/login" className="link">
-              Login
-            </Link>
-          </div>
-          <div
-            className="navbar-container__right-register"
-            onClick={showShortFooters}
-          >
-            <Link to="/register" className="link">
-              Register
-            </Link>
-          </div> */}
-          <div className="navbar-container__right-profile">
-            <img
-              src={profileuser}
-              aria-describedby={id}
-              onClick={handleClick}
-              alt="profile"
-              width="30"
-              height="30"
-            ></img>
-            <Popover
-              id={id}
-              open={open}
-              anchorEl={anchorEl}
-              onClose={handleClose}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-            >
-              <Typography sx={{ p: 2 }}>View Profile</Typography>
-              <Typography sx={{ p: 2 }}>Logout</Typography>
-            </Popover>
-          </div>
+          {!isLoggedIn ? (
+            <>
+              <div
+                className="navbar-container__right-login"
+                onClick={showShortFooters}
+              >
+                <Link to="/login" className="link">
+                  Login
+                </Link>
+              </div>
+              <div
+                className="navbar-container__right-register"
+                onClick={showShortFooters}
+              >
+                <Link to="/register" className="link">
+                  Register
+                </Link>
+              </div>
+            </>
+          ) : (
+            <div className="navbar-container__right-profile">
+              <img
+                src={profileuser}
+                aria-describedby={id}
+                onClick={handleClick}
+                alt="profile"
+                width="30"
+                height="30"
+              ></img>
+              <Popover
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+              >
+                <Typography sx={{ p: 2 }} onClick={getAllToDefault}>
+                  <Link to="/viewprofile" className="link">
+                    View Profile
+                  </Link>
+                </Typography>
+                <Typography sx={{ p: 2 }} onClick={hanldeLogout}>
+                  <Link to="/" className="link">
+                    Logout
+                  </Link>
+                </Typography>
+              </Popover>
+            </div>
+          )}
         </div>
       </nav>
     );
