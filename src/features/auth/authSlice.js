@@ -6,6 +6,7 @@ const initialState = {
   isLoggedIn: false,
   currentUser: null,
   isLoading: false,
+  isToastDisplayed: false,
 };
 
 export const login = createAsyncThunk(
@@ -24,34 +25,10 @@ export const login = createAsyncThunk(
 
 export const register = createAsyncThunk(
   "auth/register",
-  async (
-    {
-      UserName,
-      UserEmail,
-      UserFirstname,
-      UserLastname,
-      UserLogo,
-      UserType,
-      Address,
-      ContactNo,
-      FounderName,
-      Password,
-    },
-    { rejectWithValue }
-  ) => {
+  async ({ data }, { rejectWithValue }) => {
     try {
-      return await sign_up(
-        UserName,
-        UserEmail,
-        UserFirstname,
-        UserLastname,
-        UserLogo,
-        UserType,
-        Address,
-        ContactNo,
-        FounderName,
-        Password
-      );
+      console.log(data);
+      return await sign_up(data);
     } catch (err) {
       console.log(err + "this is slice error catch");
       if (!err.response) throw err;
@@ -73,6 +50,11 @@ export const logout = createAsyncThunk("auth/logout", async () => {
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    setDisplayLoginToast: (state) => {
+      state.isToastDisplayed = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state, action) => {
@@ -81,6 +63,7 @@ const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = true;
         state.isLoggedIn = true;
+        state.isToastDisplayed = false;
         state.currentUser = action.payload.data;
       })
       .addCase(login.rejected, (state, action) => {
@@ -94,6 +77,7 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.isLoggedIn = false;
         state.isLoading = false;
+        state.isToastDisplayed = true;
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoggedIn = false;
@@ -105,6 +89,7 @@ const authSlice = createSlice({
       .addCase(logout.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = false;
+        state.isToastDisplayed = true;
         state.currentUser = null;
         state.accesstoken = null;
       })
@@ -113,5 +98,5 @@ const authSlice = createSlice({
       });
   },
 });
-
+export const { setDisplayLoginToast } = authSlice.actions;
 export default authSlice.reducer;

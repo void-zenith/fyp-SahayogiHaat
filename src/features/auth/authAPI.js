@@ -16,31 +16,13 @@ export const sign_out = async () => {
   return await axios.post(url);
 };
 
-export const sign_up = async (
-  UserName,
-  UserEmail,
-  UserFirstname,
-  UserLastname,
-  UserLogo,
-  UserType,
-  Address,
-  ContactNo,
-  FounderName,
-  Password
-) => {
-  let url = `${API_URL}/auth/logout`;
-  let data = {
-    UserName,
-    UserEmail,
-    UserFirstname,
-    UserLastname,
-    UserLogo,
-    UserType,
-    Address,
-    ContactNo,
-    FounderName,
-    Password,
-  };
+export const sign_up = async (data) => {
+  let url = `${API_URL}/auth/register`;
 
-  return await axios.post(url, data);
+  return await axios({
+    method: "POST",
+    url: url,
+    data: data,
+    headers: { "Content-Type": "multipart/form-data" },
+  });
 };

@@ -10,6 +10,7 @@ import { useNavigate } from "react-router";
 import loginbg from "../../Assets/Images/login-bg.png";
 import { login } from "../../features/auth/authSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const Login = () => {
       .then(unwrapResult)
       .then((res) => {
         if (res.status === 200) {
+          toast("Success", { autoClose: 150000 });
           navigate("/");
         }
       });
@@ -86,7 +88,6 @@ const Login = () => {
                 type="rectangle"
                 label="Sign up"
                 variant="outlined-primary-rectangle"
-                onClick={handleLogin}
               ></Button>
             </Link>
           </div>
@@ -105,6 +106,7 @@ const Login = () => {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </div>
   );
